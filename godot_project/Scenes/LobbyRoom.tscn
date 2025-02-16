@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dn217lts744s7"]
+
+[node name="LobbyRoom" type="Node2D"]
+
+[node name="AnxietyBarPH" type="ColorRect" parent="."]
+offset_left = 17.0
+offset_top = 15.0
+offset_right = 258.0
+offset_bottom = 55.0
+
+[node name="BladderBarPH" type="ColorRect" parent="."]
+offset_left = 90.0
+offset_top = 461.0
+offset_right = 331.0
+offset_bottom = 501.0
