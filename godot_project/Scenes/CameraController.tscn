@@ -1,0 +1,171 @@
+[gd_scene load_steps=18 format=3 uid="uid://bs17qp0jueep2"]
+
+[ext_resource type="Script" path="res://Scripts/camera.gd" id="1_3bo5h"]
+[ext_resource type="Script" path="res://Scripts/camera_controller.gd" id="1_ulyci"]
+[ext_resource type="Texture2D" uid="uid://ci44yaggskinw" path="res://Arts/camera/camera.png" id="2_n6v24"]
+[ext_resource type="AudioStream" uid="uid://bwtl55hxhxqju" path="res://Audios/camera/smile_1.wav" id="3_bnftk"]
+[ext_resource type="Texture2D" uid="uid://co064vmlu7kuf" path="res://Arts/camera/camera_pose.png" id="3_q7ij6"]
+[ext_resource type="Texture2D" uid="uid://crbvl8ftld3ms" path="res://Arts/camera/camera_countdown3.png" id="4_u1808"]
+[ext_resource type="Texture2D" uid="uid://cyw8mnujg2hvc" path="res://Arts/camera/camera_countdown4.png" id="5_y76s0"]
+[ext_resource type="Texture2D" uid="uid://bv1ddnoe2jxm" path="res://Arts/camera/camera_thumbs_up.png" id="6_b2lgc"]
+[ext_resource type="Texture2D" uid="uid://cvcsuayrcevpm" path="res://Arts/camera/camera_countdown2.png" id="6_q4xy0"]
+[ext_resource type="Texture2D" uid="uid://do2yci0ouvnji" path="res://Arts/camera/camera_countdown1.png" id="7_4lp6l"]
+[ext_resource type="Script" path="res://Scripts/flashlight.gd" id="9_pflxm"]
+[ext_resource type="AudioStream" uid="uid://dwogvlts1y7et" path="res://Audios/camera/shutter.wav" id="10_t3iuy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ogluy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_n6v24")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_q7ij6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_b2lgc")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xx778"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_y76s0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_u1808")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_y76s0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_q4xy0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_y76s0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_4lp6l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_y76s0")
+}],
+"loop": false,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="Animation" id="Animation_hcvdq"]
+resource_name = "flashlight"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flashlight/Light:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.433333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ff1wg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flashlight/Light:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0gp5i"]
+_data = {
+"RESET": SubResource("Animation_ff1wg"),
+"flashlight": SubResource("Animation_hcvdq")
+}
+
+[node name="CameraController" type="Node2D"]
+script = ExtResource("1_ulyci")
+
+[node name="Camera" type="Node2D" parent="."]
+position = Vector2(56, 285)
+script = ExtResource("1_3bo5h")
+metadata/_edit_group_ = true
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="Camera"]
+stream = ExtResource("3_bnftk")
+volume_db = 8.914
+
+[node name="Background" type="ColorRect" parent="Camera"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -89.0
+offset_top = -67.0
+offset_right = 92.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+color = Color(1, 1, 1, 0.517647)
+
+[node name="CameraIcon" type="AnimatedSprite2D" parent="Camera"]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_ogluy")
+
+[node name="Countdown" type="AnimatedSprite2D" parent="Camera"]
+position = Vector2(2, -124)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_xx778")
+
+[node name="PoseControl" type="Control" parent="Camera"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -89.0
+offset_top = -78.0
+offset_right = 93.0
+offset_bottom = 73.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Flashlight" type="Node2D" parent="."]
+script = ExtResource("9_pflxm")
+metadata/_edit_group_ = true
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="Flashlight"]
+stream = ExtResource("10_t3iuy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Flashlight"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_0gp5i")
+}
+
+[node name="Light" type="ColorRect" parent="Flashlight"]
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 961.0
+offset_bottom = 542.0
+color = Color(1, 1, 1, 0)
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true

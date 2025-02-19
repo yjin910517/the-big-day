@@ -1,0 +1,169 @@
+[gd_scene load_steps=23 format=3 uid="uid://cbp36cf1oqpxy"]
+
+[ext_resource type="Script" path="res://Scripts/conversation.gd" id="1_lonuu"]
+[ext_resource type="Texture2D" uid="uid://dalqx3mpehvm8" path="res://Arts/bubbles/bubble_a4.png" id="1_q1ed4"]
+[ext_resource type="Texture2D" uid="uid://ch4e7hn6i34py" path="res://Arts/bubbles/bubble_a5.png" id="2_hqc00"]
+[ext_resource type="Texture2D" uid="uid://bixx4mffh1vc4" path="res://Arts/bubbles/bubble_a6.png" id="3_l56m1"]
+[ext_resource type="Texture2D" uid="uid://ds5qpwxw802hw" path="res://Arts/bubbles/bubble_a1.png" id="4_jykaf"]
+[ext_resource type="Texture2D" uid="uid://boc47n0kyui2h" path="res://Arts/bubbles/bubble_b4.png" id="4_spror"]
+[ext_resource type="Texture2D" uid="uid://q5vhc6gphw18" path="res://Arts/bubbles/bubble_progress_over.png" id="5_3mv63"]
+[ext_resource type="Texture2D" uid="uid://2s2llvbpd1fv" path="res://Arts/bubbles/bubble_b5.png" id="5_k4o3m"]
+[ext_resource type="Texture2D" uid="uid://b5oxk50f7gcd3" path="res://Arts/bubbles/bubble_a2.png" id="5_rm6yy"]
+[ext_resource type="Script" path="res://Scripts/bubble_countdown.gd" id="5_twmuw"]
+[ext_resource type="Texture2D" uid="uid://cr13kvefuqmns" path="res://Arts/bubbles/bubble_progress.png" id="6_18p7w"]
+[ext_resource type="Texture2D" uid="uid://di0237rvxxvql" path="res://Arts/bubbles/bubble_progress_under.png" id="6_161c6"]
+[ext_resource type="Texture2D" uid="uid://ce52xhy7yf5o7" path="res://Arts/bubbles/bubble_b6.png" id="6_ljwm3"]
+[ext_resource type="Texture2D" uid="uid://cclghor2rq4gh" path="res://Arts/bubbles/bubble_a3.png" id="6_wfthb"]
+[ext_resource type="Texture2D" uid="uid://51brp6co13r5" path="res://Arts/bubbles/bubble_b1.png" id="10_ac2l3"]
+[ext_resource type="Texture2D" uid="uid://edg72wublr00" path="res://Arts/bubbles/bubble_b2.png" id="11_8n0dm"]
+[ext_resource type="Texture2D" uid="uid://db6ymp6m3u8rv" path="res://Arts/bubbles/bubble_b3.png" id="12_1sqli"]
+[ext_resource type="AudioStream" uid="uid://bd7q7y7saxvrc" path="res://Audios/gibbers/435876_gibber_1.wav" id="14_72n7t"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mu3fm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_q1ed4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_hqc00")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_l56m1")
+}],
+"loop": true,
+"name": &"active_a",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_spror")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_k4o3m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ljwm3")
+}],
+"loop": true,
+"name": &"active_b",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_jykaf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_rm6yy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wfthb")
+}],
+"loop": true,
+"name": &"talking_a1",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_ac2l3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_8n0dm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_1sqli")
+}],
+"loop": true,
+"name": &"talking_b1",
+"speed": 3.0
+}]
+
+[sub_resource type="Animation" id="Animation_nod5a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bubble:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_oias0"]
+resource_name = "bubble_dynamic"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bubble:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.46667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -1), Vector2(0, 0), Vector2(0, 1), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tvhqo"]
+_data = {
+"RESET": SubResource("Animation_nod5a"),
+"bubble_dynamic": SubResource("Animation_oias0")
+}
+
+[node name="Conversation" type="Node2D"]
+script = ExtResource("1_lonuu")
+
+[node name="Bubble" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_mu3fm")
+animation = &"active_b"
+
+[node name="ClickDetect" type="Control" parent="Bubble"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -18.0
+offset_top = -16.0
+offset_right = -18.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Gibber" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_72n7t")
+
+[node name="FreezeTimer" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tvhqo")
+}
+
+[node name="CountdownDisplay" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 49.0
+offset_top = -63.0
+offset_right = 49.0
+offset_bottom = -63.0
+script = ExtResource("5_twmuw")
+metadata/_edit_group_ = true
+
+[node name="Progress" type="TextureProgressBar" parent="CountdownDisplay"]
+layout_mode = 0
+offset_right = 18.0
+offset_bottom = 18.0
+scale = Vector2(2, 2)
+step = 0.01
+value = 100.0
+fill_mode = 4
+texture_under = ExtResource("6_161c6")
+texture_over = ExtResource("5_3mv63")
+texture_progress = ExtResource("6_18p7w")

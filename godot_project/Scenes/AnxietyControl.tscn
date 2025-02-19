@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://d366g7wcxg11t"]
+
+[ext_resource type="Script" path="res://Scripts/anxiety_controller.gd" id="1_ikhfa"]
+[ext_resource type="Texture2D" uid="uid://b5ri7wgtvrnl8" path="res://Arts/bars/anxiety_bar_under.png" id="2_2wm8g"]
+[ext_resource type="Texture2D" uid="uid://crim0mvp8dp55" path="res://Arts/bars/anxiety_bar_progress.png" id="3_nmxgp"]
+
+[node name="AnxietyControl" type="Node2D"]
+script = ExtResource("1_ikhfa")
+
+[node name="AnxietyBar" type="TextureProgressBar" parent="."]
+offset_left = 893.0
+offset_top = 450.0
+offset_right = 1253.0
+offset_bottom = 480.0
+rotation = -1.5708
+value = 50.0
+texture_under = ExtResource("2_2wm8g")
+texture_progress = ExtResource("3_nmxgp")
