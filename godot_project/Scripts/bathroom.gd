@@ -13,7 +13,7 @@ func _ready() -> void:
 	timer.connect("timeout", Callable(self, "_on_bathroom_timeout"))
 	
 	timer.one_shot = true
-	timer.wait_time = 8
+	timer.wait_time = 7
 	
 	hide()
 

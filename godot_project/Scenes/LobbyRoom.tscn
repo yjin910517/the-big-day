@@ -17,6 +17,8 @@ script = ExtResource("1_dgel6")
 
 [node name="LevelTimer" type="Timer" parent="."]
 
+[node name="CooldownTimer" type="Timer" parent="."]
+
 [node name="Background" type="ColorRect" parent="."]
 offset_right = 960.0
 offset_bottom = 540.0

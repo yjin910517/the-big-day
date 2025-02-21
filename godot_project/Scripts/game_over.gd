@@ -14,7 +14,9 @@ signal show_achievements()
 @onready var next_btn = $NextButton
 @onready var click_detect = $NextButton/ClickDetect
 
-var fail_assets = {
+var reason
+
+var outcome_assets = {
 	"anxiety_attack": {
 		"audio":preload("res://Audios/547961__scream.wav"),
 		"background": "normal",
@@ -63,7 +65,7 @@ func _ready() -> void:
 
 func _on_button_gui_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		emit_signal("show_achievements")
+		emit_signal("show_achievements", reason)
 
 
 func display_gud(dataset):
@@ -74,14 +76,14 @@ func display_gud(dataset):
 	bubbles.text = str(total_bubbles)
 	photos.text = str(total_photos)
 	
-	# update failed reason info
-	var reason = dataset["reason"]
-	var fail_data = fail_assets[reason]
-	audio.stream = fail_data["audio"]
+	# update outcome info
+	reason = dataset["reason"]
+	var display_data = outcome_assets[reason]
+	audio.stream = display_data["audio"]
 	audio.play()
-	background.play(fail_data["background"])
-	icon.texture = fail_data["icon"]
-	label.text = fail_data["text"]
+	background.play(display_data["background"])
+	icon.texture = display_data["icon"]
+	label.text = display_data["text"]
 	
 	show()
 	

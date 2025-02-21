@@ -12,6 +12,7 @@ signal game_over(final_dataset)
 @onready var bathroom = $Bathroom
 @onready var status_display = $StatusDisplay
 @onready var level_timer = $LevelTimer
+@onready var cooldown_timer = $CooldownTimer
 
 
 var num_bubbles_cleared
@@ -78,6 +79,7 @@ var level_data = [
 func _ready() -> void:
 	# level progression
 	level_timer.connect("timeout", Callable(self, "_on_level_timeout"))
+	cooldown_timer.connect("timeout", Callable(self, "_on_day_end"))
 	
 	# game dynamics
 	bubble_control.connect("update_anxiety", Callable(anxiety_control, "_on_bubble_cnt_update"))
@@ -88,7 +90,7 @@ func _ready() -> void:
 	bathroom_control.connect("bathroom_break", Callable(self, "_on_bathroom_break_start"))
 	bathroom.connect("bathroom_completed", Callable(self, "_on_bathroom_break_completed"))
 	
-	# Game over signals
+	# game over signals
 	anxiety_control.connect("game_over", Callable(self, "_on_game_over"))
 	bathroom_control.connect("game_over", Callable(self, "_on_game_over"))
 	camera_control.connect("game_over", Callable(self, "_on_game_over"))
@@ -103,7 +105,10 @@ func _ready() -> void:
 	level_timer.one_shot = true
 	level_timer.wait_time = level_duration
 	
-
+	cooldown_timer.one_shot = true
+	cooldown_timer.wait_time = 3
+	
+	
 func start_game():
 		
 	bathroom.hide()
@@ -139,16 +144,23 @@ func _on_level_timeout():
 	
 	current_level += 1
 	if current_level >= len(level_data):
-		day_end = true
-		# immediately end game and trigger success if not in bathroom
-		if !is_in_bathroom:
-			_on_game_over("success")
+		bubble_control.stop_spawning()
+		cooldown_timer.start()
 		
 	else:
 		_set_level_data(current_level)
 		level_timer.start()
 		# to do: replace with real clock display
 		status_display.set_game_clock(current_level)
+
+
+func _on_day_end():
+	day_end = true
+	camera_control.day_end = true
+	if !is_in_bathroom and !camera_control.is_shooting:
+		_on_game_over("success")
+	# if the player is in the middle of shooting or bathroom
+	# these two event end will trigger game success signal
 	
 
 func _on_update_bubble_cleared(num_bubbles):

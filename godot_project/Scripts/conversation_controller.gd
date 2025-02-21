@@ -72,6 +72,10 @@ func start_spawning(t):
 	spawn_timer.start()
 
 
+func stop_spawning():
+	spawn_timer.stop()
+
+
 func _on_spawn_timeout():
 	_spawn_conversation()
 

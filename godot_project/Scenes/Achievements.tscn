@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://ceroxlhh8g556"]
+[gd_scene load_steps=12 format=3 uid="uid://ceroxlhh8g556"]
 
 [ext_resource type="Texture2D" uid="uid://c2kxqccdm4jn8" path="res://Arts/achievements/achievement_tiles1.png" id="1_7huda"]
+[ext_resource type="Script" path="res://Scripts/achievements.gd" id="1_t3rwd"]
 [ext_resource type="Texture2D" uid="uid://chem0662a2nof" path="res://Arts/achievements/achievement_tiles5.png" id="2_r7qbh"]
 [ext_resource type="Texture2D" uid="uid://bb27iq476yhm1" path="res://Arts/achievements/achievement_tiles3.png" id="3_v1do2"]
 [ext_resource type="Texture2D" uid="uid://dx2ea0ny2r8yt" path="res://Arts/achievements/achievement_tiles6.png" id="4_lht6d"]
@@ -80,6 +81,7 @@ animations = [{
 }]
 
 [node name="Achievements" type="Node2D"]
+script = ExtResource("1_t3rwd")
 
 [node name="BG" type="ColorRect" parent="."]
 offset_right = 960.0

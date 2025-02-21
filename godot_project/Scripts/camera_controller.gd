@@ -15,6 +15,7 @@ var spawn_interval
 
 # node status 
 var is_shooting
+var day_end
 var success_flag
 var total_photo_taken
 
@@ -34,6 +35,7 @@ func start_game():
 	
 	# reset all parameters
 	is_shooting = false
+	day_end = false
 	success_flag = false
 	total_photo_taken = 0
 	
@@ -100,9 +102,16 @@ func _on_flashlight_completed():
 	if success_flag:
 		total_photo_taken += 1
 		emit_signal("update_photo_taken", total_photo_taken)
-		spawn_timer.start()
-		# display the success icon for a second
-		await get_tree().create_timer(1).timeout
-		camera.hide()
+		
+		# restart next cycle if the game is not ended
+		if !day_end:
+			spawn_timer.start()
+			# display the success icon for a second
+			await get_tree().create_timer(1).timeout
+			camera.hide()
+		# end game if the day has ended
+		else:
+			emit_signal("game_over", "success")
+			
 	else: 
 		emit_signal("game_over", "bad_photo")
