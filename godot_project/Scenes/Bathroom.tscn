@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhom0c5j5a5om"]
+
+[ext_resource type="Script" path="res://Scripts/bathroom.gd" id="1_rh6j1"]
+[ext_resource type="AudioStream" uid="uid://kpjhoxfrsiue" path="res://Audios/404329_toilet_flush.wav" id="2_gw6ko"]
+[ext_resource type="Texture2D" uid="uid://tuqhge4v32hl" path="res://Arts/bars/bathroom_scene.png" id="2_uix7o"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2gu6d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_uix7o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Bathroom" type="Node2D"]
+position = Vector2(435, 574)
+script = ExtResource("1_rh6j1")
+metadata/_edit_group_ = true
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_gw6ko")
+
+[node name="Room" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_2gu6d")
+centered = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

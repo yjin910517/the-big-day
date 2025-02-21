@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/conversation_controller.gd" id="1_igvmd"]
 [ext_resource type="AudioStream" uid="uid://hvgyp5d7eaqi" path="res://Audios/gibbers/503415__short_2.wav" id="2_ibawt"]
 
-[node name="ConversationController" type="Node2D" groups=["Bubbles"]]
+[node name="ConversationController" type="Node2D"]
 script = ExtResource("1_igvmd")
 
 [node name="ClearSound" type="AudioStreamPlayer2D" parent="."]

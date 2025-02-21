@@ -3,12 +3,12 @@ extends Node2D
 
 signal camera_timeout(is_success)
 
+
 var smiles = [
 	preload("res://Audios/camera/smile_1.wav"),
 	preload("res://Audios/camera/smile_2.wav"),
 	preload("res://Audios/camera/smile_3.wav")
 ]
-
 
 
 @onready var pose_control = $PoseControl

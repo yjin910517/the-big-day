@@ -1,56 +1,84 @@
-[gd_scene load_steps=6 format=3 uid="uid://dn217lts744s7"]
+[gd_scene load_steps=12 format=3 uid="uid://dn217lts744s7"]
 
 [ext_resource type="PackedScene" uid="uid://cuqqjgwk0r3kd" path="res://Scenes/ConversationController.tscn" id="1_8lyby"]
 [ext_resource type="Script" path="res://Scripts/lobby_room.gd" id="1_dgel6"]
+[ext_resource type="FontFile" uid="uid://5p1o78lxhgvg" path="res://Fonts/ldfcomicsans-font/Ldfcomicsans-jj7l.ttf" id="2_dh607"]
+[ext_resource type="Script" path="res://Scripts/status_display.gd" id="2_tpj0o"]
 [ext_resource type="PackedScene" uid="uid://d366g7wcxg11t" path="res://Scenes/AnxietyControl.tscn" id="3_q0fqx"]
-[ext_resource type="PackedScene" uid="uid://0hp31gh62r4k" path="res://Scenes/WineBar.tscn" id="4_ctsku"]
+[ext_resource type="Texture2D" uid="uid://bus8ias6yshaw" path="res://Arts/bars/bubble_count_sml_icon.png" id="3_yqy2x"]
+[ext_resource type="PackedScene" uid="uid://0hp31gh62r4k" path="res://Scenes/WineControl.tscn" id="4_ctsku"]
+[ext_resource type="Texture2D" uid="uid://k1uli2pat3wm" path="res://Arts/bars/photo_count_sml_icon.png" id="4_edpu3"]
 [ext_resource type="PackedScene" uid="uid://bs17qp0jueep2" path="res://Scenes/CameraController.tscn" id="4_l8kr1"]
+[ext_resource type="PackedScene" uid="uid://bsjnyrvgxtoyl" path="res://Scenes/BathroomControl.tscn" id="4_mjynj"]
+[ext_resource type="PackedScene" uid="uid://bhom0c5j5a5om" path="res://Scenes/Bathroom.tscn" id="7_6nf67"]
 
 [node name="LobbyRoom" type="Node2D"]
 script = ExtResource("1_dgel6")
+
+[node name="LevelTimer" type="Timer" parent="."]
 
 [node name="Background" type="ColorRect" parent="."]
 offset_right = 960.0
 offset_bottom = 540.0
 color = Color(0.941176, 0.921569, 0.658824, 1)
 
-[node name="ConversationController" parent="." instance=ExtResource("1_8lyby")]
+[node name="StatusDisplay" type="Node2D" parent="."]
+script = ExtResource("2_tpj0o")
 
-[node name="GameClock" type="ColorRect" parent="."]
+[node name="GameClock" type="ColorRect" parent="StatusDisplay"]
 offset_left = 27.0
 offset_top = 23.0
 offset_right = 109.0
 offset_bottom = 109.0
 color = Color(0.211765, 0.466667, 0.478431, 1)
 
-[node name="Label" type="Label" parent="GameClock"]
-layout_mode = 0
-offset_left = 105.0
-offset_top = 4.0
-offset_right = 239.0
-offset_bottom = 86.0
-text = "Bubbles:XX
-Photos: XX"
+[node name="BubbleLabel" type="Label" parent="StatusDisplay"]
+offset_left = 151.0
+offset_top = 25.0
+offset_right = 222.0
+offset_bottom = 65.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_dh607")
+theme_override_font_sizes/font_size = 20
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon" type="Sprite2D" parent="StatusDisplay/BubbleLabel"]
+position = Vector2(-3, 20)
+texture = ExtResource("3_yqy2x")
+
+[node name="PhotoLabel" type="Label" parent="StatusDisplay"]
+offset_left = 150.0
+offset_top = 72.0
+offset_right = 221.0
+offset_bottom = 112.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_dh607")
+theme_override_font_sizes/font_size = 20
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon" type="Sprite2D" parent="StatusDisplay/PhotoLabel"]
+position = Vector2(-1, 18)
+scale = Vector2(1.72222, 2)
+texture = ExtResource("4_edpu3")
+
+[node name="ConversationController" parent="." instance=ExtResource("1_8lyby")]
 
 [node name="AnxietyControl" parent="." instance=ExtResource("3_q0fqx")]
+position = Vector2(4, 62)
 
-[node name="BladderBarPH" type="ColorRect" parent="."]
-offset_left = 110.0
-offset_top = 479.0
-offset_right = 351.0
-offset_bottom = 503.0
-color = Color(0, 0.678431, 1, 1)
-
-[node name="BladderBarIcon" type="ColorRect" parent="BladderBarPH"]
-layout_mode = 0
-offset_left = -75.0
-offset_top = -11.0
-offset_right = -22.0
-offset_bottom = 40.0
-color = Color(0, 0.678431, 1, 1)
+[node name="BathroomControl" parent="." instance=ExtResource("4_mjynj")]
+position = Vector2(65, 462)
 
 [node name="WineControl" parent="." instance=ExtResource("4_ctsku")]
-position = Vector2(550, 489)
+position = Vector2(819, 449)
 
 [node name="CameraController" parent="." instance=ExtResource("4_l8kr1")]
 position = Vector2(1007, 9)
+
+[node name="Bathroom" parent="." instance=ExtResource("7_6nf67")]
