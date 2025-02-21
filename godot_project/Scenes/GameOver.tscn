@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bt4xmbf1dftcw"]
+[gd_scene load_steps=16 format=3 uid="uid://bt4xmbf1dftcw"]
 
 [ext_resource type="Script" path="res://Scripts/game_over.gd" id="1_iiiwc"]
 [ext_resource type="Texture2D" uid="uid://ctokmeyu1lwpo" path="res://Arts/game_over/gameover1.png" id="2_aucpp"]
@@ -6,8 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://bn5g8684g4xh8" path="res://Arts/game_over/gameover3.png" id="4_pagrq"]
 [ext_resource type="Texture2D" uid="uid://cupk4rhmbygrr" path="res://Arts/game_over/gameover4.png" id="5_aatjg"]
 [ext_resource type="Texture2D" uid="uid://cd8qp50587bqv" path="res://Arts/game_over/gameover5.png" id="6_l2nbv"]
+[ext_resource type="Texture2D" uid="uid://bnkmurdn58ni3" path="res://Arts/game_over/game_success.png" id="7_8jqas"]
 [ext_resource type="Texture2D" uid="uid://dbryhyhti5skg" path="res://Arts/game_over/bathroom_icon.png" id="7_42nf0"]
+[ext_resource type="FontFile" uid="uid://42cdubi7inbk" path="res://Fonts/ldfcomicsans-font/Ldfcomicsansbold-zgma.ttf" id="7_x0pjn"]
 [ext_resource type="FontFile" uid="uid://5p1o78lxhgvg" path="res://Fonts/ldfcomicsans-font/Ldfcomicsans-jj7l.ttf" id="8_lkhv5"]
+[ext_resource type="Texture2D" uid="uid://bus8ias6yshaw" path="res://Arts/bars/bubble_count_sml_icon.png" id="8_xwy8k"]
+[ext_resource type="Texture2D" uid="uid://k1uli2pat3wm" path="res://Arts/bars/photo_count_sml_icon.png" id="9_bmwp7"]
+[ext_resource type="Texture2D" uid="uid://b7v2hioy1ry5k" path="res://Arts/next_button.png" id="12_t73vd"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jqrbt"]
 animations = [{
@@ -41,20 +46,75 @@ animations = [{
 "loop": true,
 "name": &"normal",
 "speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_8jqas")
+}],
+"loop": true,
+"name": &"success",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3400c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_t73vd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
 }]
 
 [node name="GameOverGUD" type="Node2D"]
 script = ExtResource("1_iiiwc")
-metadata/_edit_group_ = true
+
+[node name="Timer" type="Timer" parent="."]
 
 [node name="Audio" type="AudioStreamPlayer2D" parent="."]
 
 [node name="Background" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_jqrbt")
-animation = &"normal"
-frame_progress = 0.935395
+animation = &"success"
 centered = false
+
+[node name="Stats" type="Node2D" parent="."]
+position = Vector2(411, 157)
+metadata/_edit_group_ = true
+
+[node name="BubbleLabel" type="Label" parent="Stats"]
+offset_right = 71.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(0.941176, 0.921569, 0.658824, 1)
+theme_override_fonts/font = ExtResource("7_x0pjn")
+theme_override_font_sizes/font_size = 32
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon" type="Sprite2D" parent="Stats/BubbleLabel"]
+position = Vector2(-10, 20)
+texture = ExtResource("8_xwy8k")
+
+[node name="PhotoLabel" type="Label" parent="Stats"]
+offset_left = 132.0
+offset_right = 203.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(0.941176, 0.921569, 0.658824, 1)
+theme_override_fonts/font = ExtResource("7_x0pjn")
+theme_override_font_sizes/font_size = 32
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon" type="Sprite2D" parent="Stats/PhotoLabel"]
+position = Vector2(-10, 18)
+scale = Vector2(2, 2)
+texture = ExtResource("9_bmwp7")
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(478, 332)
@@ -67,7 +127,20 @@ offset_top = 464.0
 offset_right = 954.0
 offset_bottom = 516.0
 theme_override_fonts/font = ExtResource("8_lkhv5")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 32
 text = "You are too distressed with a full bladder"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="NextButton" type="AnimatedSprite2D" parent="."]
+position = Vector2(894, 490)
+sprite_frames = SubResource("SpriteFrames_3400c")
+metadata/_edit_group_ = true
+
+[node name="ClickDetect" type="Control" parent="NextButton"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -27.0
+offset_top = -18.0
+offset_right = 27.0
+offset_bottom = 18.0

@@ -1,3 +1,155 @@
-[gd_scene format=3 uid="uid://ceroxlhh8g556"]
+[gd_scene load_steps=11 format=3 uid="uid://ceroxlhh8g556"]
+
+[ext_resource type="Texture2D" uid="uid://c2kxqccdm4jn8" path="res://Arts/achievements/achievement_tiles1.png" id="1_7huda"]
+[ext_resource type="Texture2D" uid="uid://chem0662a2nof" path="res://Arts/achievements/achievement_tiles5.png" id="2_r7qbh"]
+[ext_resource type="Texture2D" uid="uid://bb27iq476yhm1" path="res://Arts/achievements/achievement_tiles3.png" id="3_v1do2"]
+[ext_resource type="Texture2D" uid="uid://dx2ea0ny2r8yt" path="res://Arts/achievements/achievement_tiles6.png" id="4_lht6d"]
+[ext_resource type="Texture2D" uid="uid://bxulrhgp0a4ou" path="res://Arts/achievements/achievement_tiles2.png" id="5_dcxlt"]
+[ext_resource type="Texture2D" uid="uid://d6sywtjab7x8" path="res://Arts/achievements/achievement_tiles4.png" id="6_2rd1h"]
+[ext_resource type="Texture2D" uid="uid://bk6i3vha4df0d" path="res://Arts/achievements/achievement_tiles7.png" id="7_332ac"]
+[ext_resource type="Texture2D" uid="uid://cno6hckk7qitr" path="res://Arts/replay_button.png" id="8_vkyh2"]
+[ext_resource type="FontFile" uid="uid://5p1o78lxhgvg" path="res://Fonts/ldfcomicsans-font/Ldfcomicsans-jj7l.ttf" id="9_c7vfv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pma01"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7huda")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_r7qbh")
+}],
+"loop": true,
+"name": &"anxiety_attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7huda")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_v1do2")
+}],
+"loop": true,
+"name": &"bad_photo",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7huda")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lht6d")
+}],
+"loop": true,
+"name": &"bathroom_emergency",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7huda")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_dcxlt")
+}],
+"loop": true,
+"name": &"blackout",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7huda")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2rd1h")
+}],
+"loop": true,
+"name": &"offended_guest",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7huda")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_332ac")
+}],
+"loop": true,
+"name": &"success",
+"speed": 5.0
+}]
 
 [node name="Achievements" type="Node2D"]
+
+[node name="BG" type="ColorRect" parent="."]
+offset_right = 960.0
+offset_bottom = 540.0
+color = Color(0.211765, 0.270588, 0.309804, 1)
+
+[node name="SuccessTile" type="AnimatedSprite2D" parent="."]
+position = Vector2(197, 124)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_pma01")
+animation = &"success"
+frame = 1
+
+[node name="BlackoutTile" type="AnimatedSprite2D" parent="."]
+position = Vector2(477, 124)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_pma01")
+animation = &"blackout"
+frame = 1
+
+[node name="BadPhotoTile" type="AnimatedSprite2D" parent="."]
+position = Vector2(757, 124)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_pma01")
+animation = &"bad_photo"
+frame = 1
+
+[node name="AnxietyTile" type="AnimatedSprite2D" parent="."]
+position = Vector2(197, 330)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_pma01")
+animation = &"anxiety_attack"
+frame = 1
+
+[node name="AngryTile" type="AnimatedSprite2D" parent="."]
+position = Vector2(477, 330)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_pma01")
+animation = &"offended_guest"
+frame = 1
+
+[node name="FullBladderTile" type="AnimatedSprite2D" parent="."]
+position = Vector2(757, 330)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_pma01")
+animation = &"bathroom_emergency"
+frame = 1
+
+[node name="RetryButton" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 307.0
+offset_top = 450.0
+offset_right = 682.0
+offset_bottom = 521.0
+metadata/_edit_group_ = true
+
+[node name="Icon" type="Sprite2D" parent="RetryButton"]
+scale = Vector2(2, 2)
+texture = ExtResource("8_vkyh2")
+centered = false
+
+[node name="Label" type="Label" parent="RetryButton"]
+layout_mode = 0
+offset_left = 97.0
+offset_top = 8.0
+offset_right = 353.0
+offset_bottom = 67.0
+theme_override_fonts/font = ExtResource("9_c7vfv")
+theme_override_font_sizes/font_size = 48
+text = "TRY AGAIN"
+horizontal_alignment = 1
+vertical_alignment = 1

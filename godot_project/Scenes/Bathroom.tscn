@@ -16,9 +16,10 @@ animations = [{
 }]
 
 [node name="Bathroom" type="Node2D"]
-position = Vector2(435, 574)
 script = ExtResource("1_rh6j1")
 metadata/_edit_group_ = true
+
+[node name="Timer" type="Timer" parent="."]
 
 [node name="Audio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_gw6ko")
@@ -28,4 +29,4 @@ scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_2gu6d")
 centered = false
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Relax" type="AnimatedSprite2D" parent="."]

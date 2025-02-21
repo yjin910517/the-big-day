@@ -46,7 +46,6 @@ func start_game():
 	total_bubbles = 0
 	cleared_bubbles = 0
 	
-	_spawn_conversation()
 	start_spawning(spawn_interval)
 
 
@@ -55,7 +54,7 @@ func update_level_params(new_params):
 	urgency_options = new_params["urgency_options"]
 	countdown_lower = new_params["countdown_lower"]
 	countdown_upper = new_params["countdown_upper"]
-
+	
 
 # clear out current game display
 func end_game():
@@ -63,7 +62,7 @@ func end_game():
 	var bubbles = get_tree().get_nodes_in_group("Bubbles")
 	for bub in bubbles:
 		bub.queue_free()
-	
+
 	# stop timer
 	spawn_timer.stop()
 	
@@ -144,7 +143,7 @@ func resume_convo():
 	var bubbles = get_tree().get_nodes_in_group("Bubbles")
 	for bub in bubbles:
 		if bub.is_urgent:
-			if bub.is_active:
+			if bub.is_reacting:
 				bub.resume_bubble()	
 				
 

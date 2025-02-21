@@ -1,10 +1,18 @@
 extends Node2D
 
 
+signal show_achievements()
+
+
+@onready var timer = $Timer
 @onready var audio = $Audio
 @onready var background = $Background
+@onready var bubbles = $Stats/BubbleLabel
+@onready var photos = $Stats/PhotoLabel
 @onready var icon = $Icon
 @onready var label = $Label
+@onready var next_btn = $NextButton
+@onready var click_detect = $NextButton/ClickDetect
 
 var fail_assets = {
 	"anxiety_attack": {
@@ -36,16 +44,38 @@ var fail_assets = {
 		"background": "blackout",
 		"icon": preload("res://Arts/game_over/wine_icon.png"),
 		"text": "You had too much wine and you were drunk."
+	},
+	"success": {
+		"audio":preload("res://Audios/242503__fail.wav"),
+		"background": "success",
+		"icon": preload("res://Arts/game_over/success_icon.png"),
+		"text": "You've made it! Everything is perfect."
 	}
 }
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	click_detect.connect("gui_input", Callable(self, "_on_button_gui_input"))
+	
+	next_btn.hide()
 
 
-func display_gud(reason):
+func _on_button_gui_input(event):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		emit_signal("show_achievements")
+
+
+func display_gud(dataset):
+	
+	# display final score
+	var total_bubbles = dataset["bubble_cleared"]
+	var total_photos = dataset["photo_taken"]
+	bubbles.text = str(total_bubbles)
+	photos.text = str(total_photos)
+	
+	# update failed reason info
+	var reason = dataset["reason"]
 	var fail_data = fail_assets[reason]
 	audio.stream = fail_data["audio"]
 	audio.play()
@@ -55,5 +85,6 @@ func display_gud(reason):
 	
 	show()
 	
-	# to do: add await time
-	# then turn on to detect click for next page
+	# show next button
+	await get_tree().create_timer(3).timeout
+	next_btn.show()
