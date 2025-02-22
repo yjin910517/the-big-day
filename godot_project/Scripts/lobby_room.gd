@@ -257,6 +257,7 @@ func _on_game_over(reason):
 	bathroom_control.end_game()
 	camera_control.end_game()
 	bubble_control.end_game()
+	
 	level_timer.stop()
 	cooldown_timer.stop()
 	tipsy.stop()

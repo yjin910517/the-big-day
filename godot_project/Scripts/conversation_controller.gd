@@ -78,6 +78,7 @@ func end_game():
 
 func start_spawning(t):
 	spawn_timer.stop()
+	spawn_timer.paused = false
 	spawn_timer.wait_time = t
 	spawn_timer.start()
 

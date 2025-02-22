@@ -40,6 +40,7 @@ func start_game():
 	total_photo_taken = 0
 	
 	spawn_timer.stop()
+	spawn_timer.paused = false
 	spawn_timer.wait_time = spawn_interval
 	spawn_timer.one_shot = true
 	spawn_timer.start()
