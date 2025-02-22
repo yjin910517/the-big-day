@@ -30,7 +30,7 @@ var outcome_assets = {
 		"text": "You are too distressed with a full bladder."
 	},
 	"bad_photo": {
-		"audio":preload("res://Audios/242503__fail.wav"),
+		"audio":preload("res://Audios/772690__oh_no.wav"),
 		"background": "normal",
 		"icon": preload("res://Arts/game_over/bad_photo.png"),
 		"text": "Oh no! You didn't pose for the camera."
@@ -48,7 +48,7 @@ var outcome_assets = {
 		"text": "You had too much wine and you were drunk."
 	},
 	"success": {
-		"audio":preload("res://Audios/242503__fail.wav"),
+		"audio":preload("res://Audios/274181__win.wav"),
 		"background": "success",
 		"icon": preload("res://Arts/game_over/success_icon.png"),
 		"text": "You've made it! Everything is perfect."

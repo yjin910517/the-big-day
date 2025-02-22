@@ -1,18 +1,93 @@
-[gd_scene load_steps=4 format=3 uid="uid://d366g7wcxg11t"]
+[gd_scene load_steps=12 format=3 uid="uid://d366g7wcxg11t"]
 
 [ext_resource type="Script" path="res://Scripts/anxiety_controller.gd" id="1_ikhfa"]
 [ext_resource type="Texture2D" uid="uid://b5ri7wgtvrnl8" path="res://Arts/bars/anxiety_bar_under.png" id="2_2wm8g"]
 [ext_resource type="Texture2D" uid="uid://crim0mvp8dp55" path="res://Arts/bars/anxiety_bar_progress.png" id="3_nmxgp"]
+[ext_resource type="FontFile" uid="uid://5p1o78lxhgvg" path="res://Fonts/ldfcomicsans-font/Ldfcomicsans-jj7l.ttf" id="4_rnrj2"]
+[ext_resource type="Texture2D" uid="uid://ia7t3j344s4r" path="res://Arts/bars/anxiety_down1.png" id="5_0a32x"]
+[ext_resource type="Texture2D" uid="uid://b0sd53gbj83n5" path="res://Arts/bars/anxiety_down2.png" id="6_lket8"]
+[ext_resource type="Texture2D" uid="uid://3qeer2hna1ja" path="res://Arts/bars/anxiety_down3.png" id="7_8pdxu"]
+[ext_resource type="Texture2D" uid="uid://dxur32jraj0xv" path="res://Arts/bars/anxiety_up1.png" id="8_5j2vp"]
+[ext_resource type="Texture2D" uid="uid://dt7uokuf48wqa" path="res://Arts/bars/anxiety_up2.png" id="9_3ivbt"]
+[ext_resource type="Texture2D" uid="uid://bkuj5xgpxtnko" path="res://Arts/bars/anxiety_up3.png" id="10_ra5nx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6sh3w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_0a32x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_lket8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8pdxu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8pdxu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8pdxu")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_5j2vp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_3ivbt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ra5nx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ra5nx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ra5nx")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
 
 [node name="AnxietyControl" type="Node2D"]
 script = ExtResource("1_ikhfa")
 
 [node name="AnxietyBar" type="TextureProgressBar" parent="."]
-offset_left = 893.0
-offset_top = 450.0
-offset_right = 1253.0
-offset_bottom = 480.0
-rotation = -1.5708
+offset_left = 882.0
+offset_top = 61.0
+offset_right = 912.0
+offset_bottom = 421.0
 value = 50.0
+fill_mode = 3
 texture_under = ExtResource("2_2wm8g")
 texture_progress = ExtResource("3_nmxgp")
+
+[node name="BarLabel" type="Label" parent="."]
+offset_left = 858.0
+offset_top = 425.0
+offset_right = 938.0
+offset_bottom = 465.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_rnrj2")
+theme_override_font_sizes/font_size = 20
+text = "STRESS
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Up" type="AnimatedSprite2D" parent="."]
+position = Vector2(861, 101)
+sprite_frames = SubResource("SpriteFrames_6sh3w")
+animation = &"up"
+autoplay = "up"
+
+[node name="Down" type="AnimatedSprite2D" parent="."]
+position = Vector2(861, 382)
+sprite_frames = SubResource("SpriteFrames_6sh3w")
+animation = &"down"
+autoplay = "down"

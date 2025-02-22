@@ -5,6 +5,8 @@ signal game_over(fail_reason)
 
 
 @onready var progress = $AnxietyBar
+@onready var up = $Up
+@onready var down = $Down
 
 var anxiety_max = 100
 var total_anxiety
@@ -21,6 +23,8 @@ func _ready() -> void:
 	
 
 func start_game():
+	up.hide()
+	down.hide()
 	total_anxiety = 0
 	progress.value = total_anxiety
 	anxiety_velocity = 0
@@ -50,7 +54,18 @@ func _update_bar_progress():
 		total_anxiety = 0
 		progress.value = total_anxiety
 	else:
-		progress.value = total_anxiety	
+		progress.value = total_anxiety
+	
+	# show arrow directions
+	if total_anxiety > 0 and anxiety_velocity < 0:
+		down.show()
+	else:
+		down.hide()
+	
+	if total_anxiety > 80 and anxiety_velocity > 0:
+		up.show()
+	else:
+		up.hide()
 
 
 # connected to bubble controller signal by main

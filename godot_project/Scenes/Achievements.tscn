@@ -75,9 +75,9 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("7_332ac")
 }],
-"loop": true,
+"loop": false,
 "name": &"success",
-"speed": 5.0
+"speed": 6.0
 }]
 
 [node name="Achievements" type="Node2D"]
@@ -94,6 +94,7 @@ scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_pma01")
 animation = &"success"
 frame = 1
+frame_progress = 1.0
 
 [node name="BlackoutTile" type="AnimatedSprite2D" parent="."]
 position = Vector2(477, 124)

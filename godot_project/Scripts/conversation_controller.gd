@@ -34,6 +34,7 @@ var countdown_upper
 # game progress trackers
 var total_bubbles # for anxiety velocity 
 var cleared_bubbles # for game achievement display
+var day_end
 
 
 # Called when the node enters the scene tree for the first time.
@@ -45,6 +46,7 @@ func start_game():
 	# initiate all parameters 
 	total_bubbles = 0
 	cleared_bubbles = 0
+	day_end = false
 	
 	start_spawning(spawn_interval)
 
@@ -160,6 +162,9 @@ func _on_bubble_cleared(bubble_node):
 	
 	total_bubbles -= 1
 	emit_signal("update_anxiety", total_bubbles)
+	
+	if total_bubbles == 0 and day_end:
+		emit_signal("game_over", "success")
 
 
 func _on_bubble_timeout(bubble_node):

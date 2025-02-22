@@ -11,15 +11,13 @@ func _ready() -> void:
 
 
 func reset():
-	# to do: replace with clock display
-	game_clock.text = str(0)
-	
+	game_clock.frame = 0
 	bubble_label.text = str(0)
 	photo_label.text = str(0)
 
 
 func set_game_clock(level):
-	game_clock.text = str(level)
+	game_clock.frame = level
 
 
 func set_bubble_count(num):

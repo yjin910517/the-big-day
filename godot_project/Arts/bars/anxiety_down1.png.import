@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tuqhge4v32hl"
-path="res://.godot/imported/bathroom_scene.png-9e9218350536f0f23f9ab4e2c7041e1e.ctex"
+uid="uid://ia7t3j344s4r"
+path="res://.godot/imported/anxiety_down1.png-1acaf0edc3a2a1fa2b1b5aa23be2b3bc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Arts/bars/bathroom_scene.png"
-dest_files=["res://.godot/imported/bathroom_scene.png-9e9218350536f0f23f9ab4e2c7041e1e.ctex"]
+source_file="res://Arts/bars/anxiety_down1.png"
+dest_files=["res://.godot/imported/anxiety_down1.png-1acaf0edc3a2a1fa2b1b5aa23be2b3bc.ctex"]
 
 [params]
 

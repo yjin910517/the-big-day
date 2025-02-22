@@ -1,16 +1,52 @@
-[gd_scene load_steps=12 format=3 uid="uid://dn217lts744s7"]
+[gd_scene load_steps=20 format=3 uid="uid://dn217lts744s7"]
 
 [ext_resource type="PackedScene" uid="uid://cuqqjgwk0r3kd" path="res://Scenes/ConversationController.tscn" id="1_8lyby"]
 [ext_resource type="Script" path="res://Scripts/lobby_room.gd" id="1_dgel6"]
 [ext_resource type="FontFile" uid="uid://5p1o78lxhgvg" path="res://Fonts/ldfcomicsans-font/Ldfcomicsans-jj7l.ttf" id="2_dh607"]
 [ext_resource type="Script" path="res://Scripts/status_display.gd" id="2_tpj0o"]
 [ext_resource type="PackedScene" uid="uid://d366g7wcxg11t" path="res://Scenes/AnxietyControl.tscn" id="3_q0fqx"]
+[ext_resource type="Texture2D" uid="uid://23cs032po22d" path="res://Arts/clock/clock1.png" id="3_rdys8"]
 [ext_resource type="Texture2D" uid="uid://bus8ias6yshaw" path="res://Arts/bars/bubble_count_sml_icon.png" id="3_yqy2x"]
+[ext_resource type="Texture2D" uid="uid://dcm5pupgm7t1r" path="res://Arts/clock/clock2.png" id="4_5q1pf"]
 [ext_resource type="PackedScene" uid="uid://0hp31gh62r4k" path="res://Scenes/WineControl.tscn" id="4_ctsku"]
 [ext_resource type="Texture2D" uid="uid://k1uli2pat3wm" path="res://Arts/bars/photo_count_sml_icon.png" id="4_edpu3"]
 [ext_resource type="PackedScene" uid="uid://bs17qp0jueep2" path="res://Scenes/CameraController.tscn" id="4_l8kr1"]
 [ext_resource type="PackedScene" uid="uid://bsjnyrvgxtoyl" path="res://Scenes/BathroomControl.tscn" id="4_mjynj"]
+[ext_resource type="Texture2D" uid="uid://diibofyeqdu0t" path="res://Arts/clock/clock3.png" id="5_bayv8"]
+[ext_resource type="Texture2D" uid="uid://bvpa0emheuc4f" path="res://Arts/clock/clock4.png" id="6_4j6jm"]
 [ext_resource type="PackedScene" uid="uid://bhom0c5j5a5om" path="res://Scenes/Bathroom.tscn" id="7_6nf67"]
+[ext_resource type="Texture2D" uid="uid://dwkgkknfxv5fj" path="res://Arts/clock/clock5.png" id="7_rif2n"]
+[ext_resource type="Texture2D" uid="uid://bscmb3haj270k" path="res://Arts/clock/clock6.png" id="8_oasc7"]
+[ext_resource type="Texture2D" uid="uid://kiptmhbrjmmi" path="res://Arts/clock/clock7.png" id="9_57u1x"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tao4f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_rdys8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5q1pf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_bayv8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4j6jm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_rif2n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_oasc7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_57u1x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="LobbyRoom" type="Node2D"]
 script = ExtResource("1_dgel6")
@@ -27,22 +63,16 @@ color = Color(0.941176, 0.921569, 0.658824, 1)
 [node name="StatusDisplay" type="Node2D" parent="."]
 script = ExtResource("2_tpj0o")
 
-[node name="GameClock" type="Label" parent="StatusDisplay"]
-offset_left = 27.0
-offset_top = 23.0
-offset_right = 109.0
-offset_bottom = 109.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 48
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="GameClock" type="AnimatedSprite2D" parent="StatusDisplay"]
+position = Vector2(113, 69)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_tao4f")
 
 [node name="BubbleLabel" type="Label" parent="StatusDisplay"]
-offset_left = 151.0
-offset_top = 25.0
-offset_right = 222.0
-offset_bottom = 65.0
+offset_left = 248.0
+offset_top = 24.0
+offset_right = 319.0
+offset_bottom = 64.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_dh607")
 theme_override_font_sizes/font_size = 20
@@ -56,10 +86,10 @@ position = Vector2(-3, 20)
 texture = ExtResource("3_yqy2x")
 
 [node name="PhotoLabel" type="Label" parent="StatusDisplay"]
-offset_left = 150.0
-offset_top = 72.0
-offset_right = 221.0
-offset_bottom = 112.0
+offset_left = 247.0
+offset_top = 75.0
+offset_right = 318.0
+offset_bottom = 115.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_dh607")
 theme_override_font_sizes/font_size = 20
@@ -82,7 +112,7 @@ position = Vector2(4, 62)
 position = Vector2(65, 462)
 
 [node name="WineControl" parent="." instance=ExtResource("4_ctsku")]
-position = Vector2(819, 449)
+position = Vector2(796, 448)
 
 [node name="CameraController" parent="." instance=ExtResource("4_l8kr1")]
 position = Vector2(1007, 9)

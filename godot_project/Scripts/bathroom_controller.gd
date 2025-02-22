@@ -11,7 +11,7 @@ signal game_over(failed_reason)
 @onready var progress = $BathroonBar
 
 var bladder_capacity = 10
-var fill_velocity = 0.5
+var fill_velocity = 0.3
 var current_fill
 var is_reacting
 

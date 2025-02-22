@@ -27,7 +27,7 @@ var level_data = [
 	# level 0
 	{"camera": {
 		"spawn_interval": 8,
-		"pos_list": [Vector2(160, 210)]
+		"pos_list": [Vector2(100, 250)]
 		},
 	"bubble": {
 		"spawn_interval": 3,
@@ -157,10 +157,15 @@ func _on_level_timeout():
 func _on_day_end():
 	day_end = true
 	camera_control.day_end = true
-	if !is_in_bathroom and !camera_control.is_shooting:
-		_on_game_over("success")
-	# if the player is in the middle of shooting or bathroom
-	# these two event end will trigger game success signal
+	bubble_control.day_end = true
+	# if the player is not occupied, immediately end game
+	if !is_in_bathroom:
+		if !camera_control.is_shooting:
+			if bubble_control.total_bubbles == 0:
+				_on_game_over("success")
+	# if the player is in the middle of something
+	# bathroom, photo shoot, bubble spawns
+	# the completion of these events will trigger game success signal
 	
 
 func _on_update_bubble_cleared(num_bubbles):

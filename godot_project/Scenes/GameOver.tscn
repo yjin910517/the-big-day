@@ -163,9 +163,21 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="NextButton" type="AnimatedSprite2D" parent="."]
-position = Vector2(894, 490)
+position = Vector2(888, 497)
 sprite_frames = SubResource("SpriteFrames_3400c")
 metadata/_edit_group_ = true
+
+[node name="BtnLabel" type="Label" parent="NextButton"]
+offset_left = -65.0
+offset_top = -56.0
+offset_right = 59.0
+offset_bottom = -16.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("8_lkhv5")
+theme_override_font_sizes/font_size = 20
+text = "Achievements"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ClickDetect" type="Control" parent="NextButton"]
 layout_mode = 3

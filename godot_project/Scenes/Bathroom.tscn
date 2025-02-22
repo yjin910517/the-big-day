@@ -1,18 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://bhom0c5j5a5om"]
+[gd_scene load_steps=8 format=3 uid="uid://bhom0c5j5a5om"]
 
 [ext_resource type="Script" path="res://Scripts/bathroom.gd" id="1_rh6j1"]
 [ext_resource type="AudioStream" uid="uid://kpjhoxfrsiue" path="res://Audios/404329_toilet_flush.wav" id="2_gw6ko"]
-[ext_resource type="Texture2D" uid="uid://tuqhge4v32hl" path="res://Arts/bars/bathroom_scene.png" id="2_uix7o"]
+[ext_resource type="Texture2D" uid="uid://bhrj8j300kde3" path="res://Arts/bathroom/bathroom_scene1.png" id="3_6jlbp"]
+[ext_resource type="Texture2D" uid="uid://b4n8cdb3vn2dw" path="res://Arts/bathroom/bathroom_scene2.png" id="4_kmv82"]
+[ext_resource type="Texture2D" uid="uid://x0uhnkfxppsy" path="res://Arts/bathroom/bathroom_scene3.png" id="5_01dqo"]
+[ext_resource type="Texture2D" uid="uid://c4bwvwksnq5pu" path="res://Arts/bathroom/bathroom_scene4.png" id="6_03k00"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2gu6d"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_uix7o")
+"texture": ExtResource("3_6jlbp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kmv82")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_01dqo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_03k00")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 2.0
 }]
 
 [node name="Bathroom" type="Node2D"]
@@ -27,6 +39,7 @@ stream = ExtResource("2_gw6ko")
 [node name="Room" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_2gu6d")
+autoplay = "default"
+frame = 1
+frame_progress = 0.38667
 centered = false
-
-[node name="Relax" type="AnimatedSprite2D" parent="."]
