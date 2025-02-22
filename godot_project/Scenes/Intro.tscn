@@ -41,6 +41,7 @@ Don't mess up."
 position = Vector2(491, 457)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_pvdj2")
+metadata/_edit_group_ = true
 
 [node name="ClickDetect" type="Control" parent="NextButton"]
 layout_mode = 3
