@@ -20,8 +20,7 @@ var num_photo_taken
 var is_in_bathroom
 var day_end
 
-
-var level_duration = 20
+var level_duration = 30
 var current_level
 var level_data = [
 	# level 0
@@ -38,8 +37,8 @@ var level_data = [
 	},
 	# level 1
 	{"camera": {
-		"spawn_interval": 6,
-		"pos_list": [Vector2(160, 210), Vector2(600, 300), Vector2(600, 210)]
+		"spawn_interval": 8,
+		"pos_list": [Vector2(100, 250)]
 		},
 	"bubble": {
 		"spawn_interval": 2,
@@ -51,25 +50,52 @@ var level_data = [
 	# level 2
 	{"camera": {
 		"spawn_interval": 6,
-		"pos_list": [Vector2(160, 210), Vector2(600, 300), Vector2(600, 210)]
+		"pos_list": [Vector2(100, 250), Vector2(566, 335), Vector2(333, 262), Vector2(323, 254),
+		Vector2(632, 213), Vector2(427, 352), Vector2(202, 277), Vector2(681, 346)]
 		},
 	"bubble": {
-		"spawn_interval": 3,
-		"urgency_options": [false, false, true],
+		"spawn_interval": 2,
+		"urgency_options": [false],
 		"countdown_lower": 6,
 		"countdown_upper": 10
 		}
 	},
 	# level 3
 	{"camera": {
-		"spawn_interval": 5,
-		"pos_list": [Vector2(160, 210), Vector2(600, 300), Vector2(600, 210)]
+		"spawn_interval": 6,
+		"pos_list": [Vector2(100, 250), Vector2(566, 335), Vector2(333, 262), Vector2(323, 254),
+		Vector2(632, 213), Vector2(427, 352), Vector2(202, 277), Vector2(681, 346)]
 		},
 	"bubble": {
 		"spawn_interval": 2,
+		"urgency_options": [false, false, true],
+		"countdown_lower": 6,
+		"countdown_upper": 10
+		}
+	},
+	# level 4
+	{"camera": {
+		"spawn_interval": 5,
+		"pos_list": [Vector2(100, 250), Vector2(566, 335), Vector2(333, 262), Vector2(323, 254),
+		Vector2(632, 213), Vector2(427, 352), Vector2(202, 277), Vector2(681, 346)]
+		},
+	"bubble": {
+		"spawn_interval": 1.5,
 		"urgency_options": [false, true],
 		"countdown_lower": 6,
 		"countdown_upper": 10
+		}
+	},
+	{"camera": {
+		"spawn_interval": 5,
+		"pos_list": [Vector2(100, 250), Vector2(566, 335), Vector2(333, 262), Vector2(323, 254),
+		Vector2(632, 213), Vector2(427, 352), Vector2(202, 277), Vector2(681, 346)]
+		},
+	"bubble": {
+		"spawn_interval": 1.5,
+		"urgency_options": [false, true],
+		"countdown_lower": 4,
+		"countdown_upper": 8
 		}
 	}
 ]

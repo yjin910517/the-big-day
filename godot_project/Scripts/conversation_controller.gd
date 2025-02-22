@@ -16,7 +16,7 @@ var BubbleScene = preload("res://Scenes/Conversation.tscn")
 # data for randomization
 var bubble_styles = ["a", "b"]
 var freeze_styles= [1]
-var active_frames = [1, 2, 3]
+var active_frames = [0, 1, 2, 3, 4, 5, 6, 7, 8]
 var gibbers = [
 	preload("res://Audios/gibbers/435876_gibber_1.wav"),
 	preload("res://Audios/gibbers/435876_gibber_2.wav"),
@@ -102,8 +102,8 @@ func _spawn_conversation():
 
 # generate random parameters for new bubble spawn
 func _generate_bubble_data():
-	var spawn_pos_x = randi_range(6, 26) * 30
-	var spawn_pos_y = randi_range(20, 35) * 10
+	var spawn_pos_x = randi_range(150, 750)
+	var spawn_pos_y = randi_range(160, 360)
 	
 	var chosen_freeze_time = randi_range(1, 3)
 	

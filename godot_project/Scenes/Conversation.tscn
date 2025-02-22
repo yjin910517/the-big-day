@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cbp36cf1oqpxy"]
+[gd_scene load_steps=35 format=3 uid="uid://cbp36cf1oqpxy"]
 
 [ext_resource type="Script" path="res://Scripts/conversation.gd" id="1_lonuu"]
 [ext_resource type="Texture2D" uid="uid://dalqx3mpehvm8" path="res://Arts/bubbles/bubble_a4.png" id="1_q1ed4"]
@@ -7,17 +7,29 @@
 [ext_resource type="Texture2D" uid="uid://ds5qpwxw802hw" path="res://Arts/bubbles/bubble_a1.png" id="4_jykaf"]
 [ext_resource type="Texture2D" uid="uid://boc47n0kyui2h" path="res://Arts/bubbles/bubble_b4.png" id="4_spror"]
 [ext_resource type="Texture2D" uid="uid://q5vhc6gphw18" path="res://Arts/bubbles/bubble_progress_over.png" id="5_3mv63"]
+[ext_resource type="Texture2D" uid="uid://c28chv8la7hyk" path="res://Arts/bubbles/bubble_a7.png" id="5_7ojqp"]
 [ext_resource type="Texture2D" uid="uid://2s2llvbpd1fv" path="res://Arts/bubbles/bubble_b5.png" id="5_k4o3m"]
 [ext_resource type="Texture2D" uid="uid://b5oxk50f7gcd3" path="res://Arts/bubbles/bubble_a2.png" id="5_rm6yy"]
 [ext_resource type="Script" path="res://Scripts/bubble_countdown.gd" id="5_twmuw"]
 [ext_resource type="Texture2D" uid="uid://cr13kvefuqmns" path="res://Arts/bubbles/bubble_progress.png" id="6_18p7w"]
 [ext_resource type="Texture2D" uid="uid://di0237rvxxvql" path="res://Arts/bubbles/bubble_progress_under.png" id="6_161c6"]
 [ext_resource type="Texture2D" uid="uid://ce52xhy7yf5o7" path="res://Arts/bubbles/bubble_b6.png" id="6_ljwm3"]
+[ext_resource type="Texture2D" uid="uid://dhmf1t02rmn3w" path="res://Arts/bubbles/bubble_a8.png" id="6_lqwu2"]
 [ext_resource type="Texture2D" uid="uid://cclghor2rq4gh" path="res://Arts/bubbles/bubble_a3.png" id="6_wfthb"]
+[ext_resource type="Texture2D" uid="uid://cam510s10gihj" path="res://Arts/bubbles/bubble_a9.png" id="7_ffjcx"]
+[ext_resource type="Texture2D" uid="uid://cjdsjcht3qi6m" path="res://Arts/bubbles/bubble_a10.png" id="8_n3a7r"]
+[ext_resource type="Texture2D" uid="uid://crkfwdiew1q6t" path="res://Arts/bubbles/bubble_a11.png" id="9_3w38w"]
 [ext_resource type="Texture2D" uid="uid://51brp6co13r5" path="res://Arts/bubbles/bubble_b1.png" id="10_ac2l3"]
+[ext_resource type="Texture2D" uid="uid://bcuemyw6wog6c" path="res://Arts/bubbles/bubble_a12.png" id="10_yrpx3"]
 [ext_resource type="Texture2D" uid="uid://edg72wublr00" path="res://Arts/bubbles/bubble_b2.png" id="11_8n0dm"]
 [ext_resource type="Texture2D" uid="uid://db6ymp6m3u8rv" path="res://Arts/bubbles/bubble_b3.png" id="12_1sqli"]
+[ext_resource type="Texture2D" uid="uid://cobbmi4ngkeim" path="res://Arts/bubbles/bubble_b7.png" id="14_7xomu"]
 [ext_resource type="AudioStream" uid="uid://bd7q7y7saxvrc" path="res://Audios/gibbers/435876_gibber_1.wav" id="14_72n7t"]
+[ext_resource type="Texture2D" uid="uid://igyyswfr40ok" path="res://Arts/bubbles/bubble_b8.png" id="15_l7mok"]
+[ext_resource type="Texture2D" uid="uid://btkx0kthxvv74" path="res://Arts/bubbles/bubble_b9.png" id="16_ph8bc"]
+[ext_resource type="Texture2D" uid="uid://dcgijijvuq0vw" path="res://Arts/bubbles/bubble_b10.png" id="17_3y8mb"]
+[ext_resource type="Texture2D" uid="uid://dnamdaeiddurj" path="res://Arts/bubbles/bubble_b11.png" id="18_e02i7"]
+[ext_resource type="Texture2D" uid="uid://bq2j4k3a2sbbp" path="res://Arts/bubbles/bubble_b12.png" id="19_bpdeb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mu3fm"]
 animations = [{
@@ -30,6 +42,24 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("3_l56m1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7ojqp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_lqwu2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ffjcx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_n3a7r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_3w38w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_yrpx3")
 }],
 "loop": true,
 "name": &"active_a",
@@ -44,6 +74,24 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("6_ljwm3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_7xomu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_l7mok")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_ph8bc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_3y8mb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_e02i7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_bpdeb")
 }],
 "loop": true,
 "name": &"active_b",
@@ -135,6 +183,7 @@ offset_right = -18.0
 offset_bottom = -13.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Gibber" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_72n7t")
