@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dn217lts744s7"]
+[gd_scene load_steps=23 format=3 uid="uid://dn217lts744s7"]
 
 [ext_resource type="PackedScene" uid="uid://cuqqjgwk0r3kd" path="res://Scenes/ConversationController.tscn" id="1_8lyby"]
 [ext_resource type="Script" path="res://Scripts/lobby_room.gd" id="1_dgel6"]
@@ -47,6 +47,116 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="Animation" id="Animation_y2rik"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StatusDisplay:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BathroomControl:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(65, 462)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WineControl:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(796, 448)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnxietyControl:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, 62)]
+}
+
+[sub_resource type="Animation" id="Animation_crivc"]
+resource_name = "tipsy"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StatusDisplay:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.5001, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(2, 1), Vector2(1, 2), Vector2(1, 2), Vector2(0, 3), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BathroomControl:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(65, 462), Vector2(67, 462), Vector2(67, 460), Vector2(66, 461), Vector2(65, 462)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WineControl:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.433333, 0.966667, 1.63333, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(796, 448), Vector2(794, 446), Vector2(795, 447), Vector2(793, 444), Vector2(796, 448)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnxietyControl:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.06667, 1.43333, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(4, 62), Vector2(5, 63), Vector2(3, 64), Vector2(4, 64), Vector2(4, 62)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_28qgs"]
+_data = {
+"RESET": SubResource("Animation_y2rik"),
+"tipsy": SubResource("Animation_crivc")
+}
 
 [node name="LobbyRoom" type="Node2D"]
 script = ExtResource("1_dgel6")
@@ -119,3 +229,8 @@ position = Vector2(1007, 9)
 
 [node name="Bathroom" parent="." instance=ExtResource("7_6nf67")]
 position = Vector2(-994, 12)
+
+[node name="TipsyVision" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_28qgs")
+}

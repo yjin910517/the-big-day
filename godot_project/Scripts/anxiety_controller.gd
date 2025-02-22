@@ -29,13 +29,13 @@ func start_game():
 	progress.value = total_anxiety
 	anxiety_velocity = 0
 	is_reacting = true
-	progress.set_process(true)
+	set_process(true)
 
 
 # called when game over
 func end_game():
 	is_reacting = false
-	progress.set_process(false)
+	set_process(false)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

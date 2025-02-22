@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ceroxlhh8g556"]
+[gd_scene load_steps=14 format=3 uid="uid://ceroxlhh8g556"]
 
 [ext_resource type="Texture2D" uid="uid://c2kxqccdm4jn8" path="res://Arts/achievements/achievement_tiles1.png" id="1_7huda"]
 [ext_resource type="Script" path="res://Scripts/achievements.gd" id="1_t3rwd"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bk6i3vha4df0d" path="res://Arts/achievements/achievement_tiles7.png" id="7_332ac"]
 [ext_resource type="Texture2D" uid="uid://cno6hckk7qitr" path="res://Arts/replay_button.png" id="8_vkyh2"]
 [ext_resource type="FontFile" uid="uid://5p1o78lxhgvg" path="res://Fonts/ldfcomicsans-font/Ldfcomicsans-jj7l.ttf" id="9_c7vfv"]
+[ext_resource type="Texture2D" uid="uid://dvtu0n5vbtusk" path="res://Arts/achievements/trophy_icon.png" id="10_2h4l3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pma01"]
 animations = [{
@@ -80,6 +81,20 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_0ag85"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_vkyh2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_2h4l3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Achievements" type="Node2D"]
 script = ExtResource("1_t3rwd")
 
@@ -137,12 +152,12 @@ anchors_preset = 0
 offset_left = 307.0
 offset_top = 450.0
 offset_right = 682.0
-offset_bottom = 521.0
+offset_bottom = 529.0
 metadata/_edit_group_ = true
 
-[node name="Icon" type="Sprite2D" parent="RetryButton"]
+[node name="Icon" type="AnimatedSprite2D" parent="RetryButton"]
 scale = Vector2(2, 2)
-texture = ExtResource("8_vkyh2")
+sprite_frames = SubResource("SpriteFrames_0ag85")
 centered = false
 
 [node name="Label" type="Label" parent="RetryButton"]
@@ -150,9 +165,9 @@ layout_mode = 0
 offset_left = 97.0
 offset_top = 8.0
 offset_right = 353.0
-offset_bottom = 67.0
+offset_bottom = 77.0
 theme_override_fonts/font = ExtResource("9_c7vfv")
 theme_override_font_sizes/font_size = 48
-text = "TRY AGAIN"
+text = "Try Again"
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -36,7 +36,7 @@ var outcome_assets = {
 		"text": "Oh no! You didn't pose for the camera."
 	},
 	"offended_guest": {
-		"audio":preload("res://Audios/242503__fail.wav"),
+		"audio":preload("res://Audios/527737_angry.wav"),
 		"background": "normal",
 		"icon": preload("res://Arts/game_over/angry_icon.png"),
 		"text": "Your guest was offended because you ignored them."
@@ -69,6 +69,8 @@ func _on_button_gui_input(event):
 
 
 func display_gud(dataset):
+	
+	next_btn.hide()
 	
 	# display final score
 	var total_bubbles = dataset["bubble_cleared"]

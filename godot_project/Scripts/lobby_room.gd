@@ -13,19 +13,23 @@ signal game_over(final_dataset)
 @onready var status_display = $StatusDisplay
 @onready var level_timer = $LevelTimer
 @onready var cooldown_timer = $CooldownTimer
+@onready var tipsy = $TipsyVision
 
 
 var num_bubbles_cleared
 var num_photo_taken
 var is_in_bathroom
 var day_end
+var is_over # use it to prevent repeat triggers of different fail reasons
 
 var level_duration = 30
 var current_level
+
+# level parameters
 var level_data = [
 	# level 0
 	{"camera": {
-		"spawn_interval": 8,
+		"spawn_interval": 11,
 		"pos_list": [Vector2(100, 250)]
 		},
 	"bubble": {
@@ -113,6 +117,7 @@ func _ready() -> void:
 	camera_control.connect("update_photo_taken", Callable(self, "_on_update_photo_taken"))
 	wine_control.connect("wine_ingested", Callable(anxiety_control, "_on_wine_ingestion"))
 	wine_control.connect("wine_ingested", Callable(bathroom_control, "_on_wine_ingestion"))
+	wine_control.connect("getting_tipsy", Callable(self, "_on_getting_tipsy"))
 	bathroom_control.connect("bathroom_break", Callable(self, "_on_bathroom_break_start"))
 	bathroom.connect("bathroom_completed", Callable(self, "_on_bathroom_break_completed"))
 	
@@ -136,25 +141,30 @@ func _ready() -> void:
 	
 	
 func start_game():
-		
+	
+	# reset everything
+	level_timer.stop()
+	cooldown_timer.stop()
+	
 	bathroom.hide()
 	bathroom_control.reset()
 	status_display.reset()
-	
-	anxiety_control.start_game()
-	wine_control.start_game()
 	
 	num_bubbles_cleared = 0
 	num_photo_taken = 0
 	is_in_bathroom = false
 	day_end = false
+	is_over = false
 	
+	# start level 0
 	current_level = 0
 	_set_level_data(current_level)
 	level_timer.start()
 	
 	bubble_control.start_game()
 	camera_control.start_game()
+	anxiety_control.start_game()
+	wine_control.start_game()
 	
 	show()
 
@@ -234,7 +244,11 @@ func _on_bathroom_break_completed():
 		anxiety_control.return_from_break()
 		camera_control.resume_camera()
 		bubble_control.resume_convo()
-	
+
+
+func _on_getting_tipsy():
+	tipsy.play("tipsy")
+
 
 # show game over GUD
 func _on_game_over(reason):
@@ -243,10 +257,15 @@ func _on_game_over(reason):
 	bathroom_control.end_game()
 	camera_control.end_game()
 	bubble_control.end_game()
+	level_timer.stop()
+	cooldown_timer.stop()
+	tipsy.stop()
 	
-	var final_dataset = {
-		"reason": reason,
-		"bubble_cleared": num_bubbles_cleared,
-		"photo_taken": num_photo_taken
-	}
-	emit_signal("game_over", final_dataset)
+	if !is_over:
+		is_over = true
+		var final_dataset = {
+			"reason": reason,
+			"bubble_cleared": num_bubbles_cleared,
+			"photo_taken": num_photo_taken
+		}
+		emit_signal("game_over", final_dataset)

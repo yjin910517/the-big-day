@@ -252,7 +252,7 @@ offset_right = 782.0
 offset_bottom = 372.0
 theme_override_fonts/font = ExtResource("2_lrbji")
 theme_override_font_sizes/font_size = 48
-text = "Today is the big day.
+text = "Today is The Big Day.
 
 Everything must be perfect.
 
@@ -269,7 +269,7 @@ offset_right = 462.0
 offset_bottom = 151.0
 theme_override_fonts/font = ExtResource("2_lrbji")
 theme_override_font_sizes/font_size = 32
-text = "1. Let your guest talk first"
+text = "1. Let your guest talk first."
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="Page1"]
@@ -280,7 +280,7 @@ offset_bottom = 184.0
 theme_override_fonts/font = ExtResource("2_lrbji")
 theme_override_font_sizes/font_size = 32
 text = "2. Click on talk bubbles 
-to respond"
+to respond."
 vertical_alignment = 1
 
 [node name="Bubble1" type="Node2D" parent="Page1"]
@@ -407,10 +407,11 @@ offset_left = 680.0
 offset_top = 345.0
 offset_right = 870.0
 offset_bottom = 396.0
+theme_override_colors/font_color = Color(1, 0.843137, 0.639216, 1)
 theme_override_fonts/font = ExtResource("2_lrbji")
 theme_override_font_sizes/font_size = 20
-text = "Careful: Some guests 
-are impatient."
+text = "Careful! Some guests 
+are impatient"
 
 [node name="Page2" type="Node2D" parent="."]
 position = Vector2(1066, 557)
@@ -423,8 +424,8 @@ offset_right = 557.0
 offset_bottom = 144.0
 theme_override_fonts/font = ExtResource("2_lrbji")
 theme_override_font_sizes/font_size = 32
-text = "3. Click & hold on camera icon. 
-Practice your smile!"
+text = "3. Pose smile for photoshoots.
+Click & hold on camera before it flashes. "
 vertical_alignment = 1
 
 [node name="Camera" type="Node2D" parent="Page2"]
@@ -481,7 +482,7 @@ offset_right = 859.0
 offset_bottom = 274.0
 theme_override_fonts/font = ExtResource("2_lrbji")
 theme_override_font_sizes/font_size = 32
-text = "4. Take bathroom break when you can"
+text = "4. Take bathroom break when you can."
 vertical_alignment = 1
 
 [node name="BathroomIcon" type="Sprite2D" parent="Page2"]
@@ -505,13 +506,14 @@ scale = Vector2(2, 2)
 texture = ExtResource("30_ylvvh")
 
 [node name="TryIt" type="Label" parent="Page2"]
-offset_left = 711.0
-offset_top = 21.0
-offset_right = 815.0
-offset_bottom = 45.0
+offset_left = 562.0
+offset_top = 157.0
+offset_right = 647.0
+offset_bottom = 181.0
+theme_override_colors/font_color = Color(1, 0.843137, 0.639216, 1)
 theme_override_fonts/font = ExtResource("2_lrbji")
 theme_override_font_sizes/font_size = 20
-text = "Try It Here!"
+text = "Try It  -->"
 
 [node name="NextButton" type="AnimatedSprite2D" parent="."]
 position = Vector2(491, 457)

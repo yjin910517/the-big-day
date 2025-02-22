@@ -23,6 +23,13 @@ var gibbers = [
 	preload("res://Audios/gibbers/152727_gibber_1.wav"),
 	preload("res://Audios/gibbers/152727_gibber_2.wav"),
 	preload("res://Audios/gibbers/152727_gibber_3.wav"),
+	preload("res://Audios/gibbers/680092_gibber_1.wav"),
+	preload("res://Audios/gibbers/680092_gibber_2.wav"),
+	preload("res://Audios/gibbers/x_gibber_1.wav"),
+	preload("res://Audios/gibbers/x_gibber_2.wav"),
+	preload("res://Audios/gibbers/x_gibber_3.wav"),
+	preload("res://Audios/gibbers/x_gibber_4.wav"),
+	preload("res://Audios/gibbers/x_gibber_5.wav"),
 ]
 
 # level parameters
@@ -70,6 +77,7 @@ func end_game():
 	
 
 func start_spawning(t):
+	spawn_timer.stop()
 	spawn_timer.wait_time = t
 	spawn_timer.start()
 

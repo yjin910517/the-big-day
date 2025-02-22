@@ -2,6 +2,7 @@ extends Node2D
 
 
 signal wine_ingested()
+signal getting_tipsy()
 signal game_over(failed_reason)
 
 
@@ -37,9 +38,8 @@ func _on_button_gui_input(event):
 			emit_signal("wine_ingested")
 
 		if num_drank == max_drink:
-			pass
-			# to do: show tipsy visual effect
-			# an animation player with mutliple track on bars position?
+			emit_signal("getting_tipsy")
+			
 		if num_drank > max_drink:
 			emit_signal("game_over", "blackout")
 			
